@@ -7,7 +7,7 @@ const routes = [
   {
     name: 'home',
     path: '/',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/home/Home.vue'),
     meta: {
       title: '首页'
     }
@@ -15,7 +15,7 @@ const routes = [
   {
     name: 'category',
     path: '/category',
-    component: () => import('../views/Category.vue'),
+    component: () => import('../views/category/Category.vue'),
     meta: {
       title: '分类'
     }
@@ -23,7 +23,7 @@ const routes = [
   {
     name: 'cart',
     path: '/cart',
-    component: () => import('../views/Cart.vue'),
+    component: () => import('../views/cart/Cart.vue'),
     meta: {
       title: '购物车'
     }
@@ -31,7 +31,7 @@ const routes = [
   {
     name: 'profile',
     path: '/profile',
-    component: () => import('../views/Profile.vue'),
+    component: () => import('../views/profile/Profile.vue'),
     meta: {
       title: '我的'
     }
