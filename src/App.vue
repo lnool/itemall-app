@@ -11,5 +11,6 @@ export default {
 };
 </script>
 <style lang="less">
-@import url("./assets/font/iconfont.css");
+@import url("//at.alicdn.com/t/font_1431323_2mhyt2jmnqd.css");
+@import url("https://cdn.bootcdn.net/ajax/libs/reseter.css/1.2.0/reseter.min.css");
 </style>
