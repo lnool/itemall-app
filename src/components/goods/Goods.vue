@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-item">
+  <div class="goods-item" @click="linkDatail(goods.iid)">
     <img :src="goods.showLarge | paraseImg" />
     <div class="title">
       {{ goods.title }}
@@ -24,12 +24,19 @@ export default {
       return "￥" + price;
     },
   },
+  methods:{
+    // 跳转详情页
+    linkDatail(iid){
+      this.$router.push('/detail/'+iid)
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
 .goods-item {
   padding: 10px;
+  font-size: 13px;
   img {
     border-radius: 10px;
   }

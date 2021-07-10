@@ -11,3 +11,8 @@ export const queryHome = () => $http({ url: '/home' })
 export const queryGoods = (params) => $http({
   url: '/home/goods', params
 })
+
+// 请求商品详情
+export const queryDetail = (params) => $http({
+  url: '/home/detail', params
+})

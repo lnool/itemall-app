@@ -13,6 +13,14 @@ const routes = [
     }
   },
   {
+    name: 'detail',
+    path: '/detail/:iid',
+    component: () => import('../views/home/Detail.vue'),
+    meta: {
+      title: '商品详情'
+    }
+  },
+  {
     name: 'category',
     path: '/category',
     component: () => import('../views/category/Category.vue'),

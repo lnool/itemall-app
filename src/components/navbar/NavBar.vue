@@ -16,7 +16,11 @@ export default {};
   text-align: center;
   line-height: 44px;
   align-items: center;
-  .left,.right{
+  .left{
+    width: 60px;
+    height: 44px;
+  }
+  .right{
     width: 60px;
     height: 44px;
   }

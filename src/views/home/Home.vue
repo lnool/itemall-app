@@ -37,24 +37,26 @@
           </waterfall>
         </van-list>
         <div class="loading">
-          <van-loading size="24px" type="spinner" color="#00BFC0" text-color="#00BFC0">加载中...</van-loading>
+          <van-loading size="24px" type="spinner" color="#00BFC0" text-color="#00BFC0"
+            >加载中...</van-loading
+          >
         </div>
       </van-tab>
     </van-tabs>
-    <back-top @click.native="backtop" v-show="scrollTop>800"/>
+    <back-top @click.native="backtop" v-show="scrollTop > 800" />
     <div class="empty"></div>
   </div>
 </template>
 
 <script>
 import { queryHome, queryGoods } from "@/api";
-import {debounce} from "@/util";
+import { debounce } from "@/util";
 import NavBar from "@/components/navbar/NavBar.vue";
 import Recommend from "@/components/recommend/Recommend.vue";
 import Waterfall from "@/components/waterfall/Waterfall.vue";
 import BackTop from "@/components/backtop/BackTop.vue";
 export default {
-  components: { NavBar, Recommend, Waterfall,BackTop },
+  components: { NavBar, Recommend, Waterfall, BackTop },
   data() {
     return {
       banner: [],
@@ -101,21 +103,21 @@ export default {
     scroll() {
       // 获取滚动的高度
       document.addEventListener("scroll", () => {
-        if(document.documentElement.scrollTop>188){
-          setTimeout(()=>this.scrollTop = document.documentElement.scrollTop,2000)
-        }else{
+        if (document.documentElement.scrollTop > 188) {
+          setTimeout(() => (this.scrollTop = document.documentElement.scrollTop), 2000);
+        } else {
           this.scrollTop = document.documentElement.scrollTop;
         }
       });
     },
     // 上拉加载数据
-    onLoad:debounce(function(){
-      this._queryGoods(this.type)
-    },2000),
+    onLoad: debounce(function () {
+      this._queryGoods(this.type);
+    }, 2000),
     // 返回
-    backtop(){
-      document.documentElement.scrollTop = 0
-    }
+    backtop() {
+      document.documentElement.scrollTop = 0;
+    },
   },
 };
 </script>
@@ -128,13 +130,13 @@ export default {
     background: white;
     .icon-saoma,
     .icon-msg {
-      font-size: 20px;
+      font-size: 14px;
     }
     .seach {
       background: #f6f6f6;
       text-align: left;
-      height: 35px;
-      line-height: 35px;
+      height: 30px;
+      line-height: 30px;
       border-radius: 20px;
       font-size: 13px;
       text-indent: 20px;
@@ -164,12 +166,12 @@ export default {
       border-radius: 10px;
     }
   }
-  .loading{
+  .loading {
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #F7F7F7;
+    background: #f7f7f7;
   }
   .empty {
     height: 55px;

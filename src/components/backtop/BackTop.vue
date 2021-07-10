@@ -10,14 +10,14 @@ export default {};
 
 <style lang="less" scoped>
 .backtop {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   position: fixed;
   right: 20px;
   bottom: 80px;
   text-align: center;
-  line-height: 40px;
+  line-height: 30px;
   background: white;
   .icon-top{
     color: #16C1BC;

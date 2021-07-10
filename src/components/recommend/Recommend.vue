@@ -28,7 +28,7 @@
       }
       .title{
         color: #707378;
-        font-size: 14px;
+        font-size: 12px;
         line-height: 35px;
       }
     }
