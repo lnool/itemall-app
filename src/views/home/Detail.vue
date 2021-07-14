@@ -78,6 +78,7 @@
 
 <script>
 import { queryDetail } from "@/api";
+import {toast} from '@/util'
 import NavBar from "../../components/navbar/NavBar.vue";
 import Collapse from "../../components/collapse/Collapse.vue";
 import Shop from "../../components/shop/Shop.vue";
@@ -178,7 +179,7 @@ export default {
     // 隐藏分享面板
     onSelect() {
       this.showShare = false;
-      this.$toast("分享成功");
+      toast("分享成功");
     },
     scroll() {
       // 获取滚动的高度

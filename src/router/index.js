@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import {queryToken} from '../util'
 
 Vue.use(VueRouter)
 
@@ -33,7 +34,8 @@ const routes = [
     path: '/cart',
     component: () => import('../views/cart/Cart.vue'),
     meta: {
-      title: '购物车'
+      title: '购物车',
+      requireAuth:true
     }
   },
   {
@@ -41,7 +43,24 @@ const routes = [
     path: '/profile',
     component: () => import('../views/profile/Profile.vue'),
     meta: {
-      title: '我的'
+      title: '我的',
+      requireAuth:true
+    }
+  },
+  {
+    name: 'register',
+    path: '/register',
+    component: () => import('../views/profile/Register.vue'),
+    meta: {
+      title: '注册'
+    }
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: () => import('../views/profile/Login.vue'),
+    meta: {
+      title: '登录'
     }
   },
 ]
@@ -52,6 +71,14 @@ const router = new VueRouter({
   routes
 })
 router.beforeEach((to, from, next) => {
+  // 验证授权
+  if(to.meta.requireAuth){
+    if(! queryToken().token) {
+      router.replace('/login')
+    }
+  }
+
+
   window.document.title = to.meta.title
   next()
 })
