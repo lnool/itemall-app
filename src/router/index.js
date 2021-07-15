@@ -15,7 +15,7 @@ const routes = [
   },
   {
     name: 'detail',
-    path: '/detail/:iid',
+    path: '/detail/:iid/:id',
     component: () => import('../views/home/Detail.vue'),
     meta: {
       title: '商品详情'
@@ -77,8 +77,7 @@ router.beforeEach((to, from, next) => {
       router.replace('/login')
     }
   }
-
-
+  
   window.document.title = to.meta.title
   next()
 })

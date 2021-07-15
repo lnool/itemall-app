@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-item" @click="linkDatail(goods.iid)">
+  <div class="goods-item" @click="linkDatail(goods.iid,goods.id)">
     <img :src="goods.showLarge | paraseImg" />
     <div class="title">
       {{ goods.title }}
@@ -26,8 +26,8 @@ export default {
   },
   methods:{
     // 跳转详情页
-    linkDatail(iid){
-      this.$router.push('/detail/'+iid)
+    linkDatail(iid,id){
+      this.$router.push('/detail/'+iid+'/'+id)
     }
   }
 };

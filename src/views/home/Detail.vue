@@ -77,8 +77,9 @@
 </template>
 
 <script>
-import { queryDetail } from "@/api";
-import {toast} from '@/util'
+import { mapState } from "vuex";
+import { queryDetail, saveCart } from "@/api";
+import { toast,queryToken} from "@/util";
 import NavBar from "../../components/navbar/NavBar.vue";
 import Collapse from "../../components/collapse/Collapse.vue";
 import Shop from "../../components/shop/Shop.vue";
@@ -86,6 +87,7 @@ import Info from "../../components/info/Info.vue";
 export default {
   data() {
     return {
+      id: 0,
       scrollTop: 0,
       goodDetail: {},
       showShare: false,
@@ -147,6 +149,12 @@ export default {
     this._queryDetail();
     this.scroll();
   },
+  computed: {
+    ...mapState({
+      user: (state) => state.user || queryToken().user,
+      token: (state) => state.token || queryToken().token,
+    }),
+  },
   filters: {
     filterImg(goodDetail) {
       return goodDetail.detailInfo.detailImage[0].list[0];
@@ -161,7 +169,8 @@ export default {
     // 获取详情信息
     async _queryDetail() {
       // 获取iid
-      const { iid } = this.$route.params;
+      const { iid, id } = this.$route.params;
+      this.id = id;
       // 请求数据
       const { data } = await queryDetail({ iid: iid });
       // 解析JSON
@@ -194,8 +203,17 @@ export default {
     onBuyClicked() {
       console.log("购买");
     },
-    onAddCartClicked() {
-      console.log("添加购物车");
+   async onAddCartClicked(obj) {
+    const {code,data} = await saveCart(
+        {
+          uid: this.user.id,
+          gid: this.id,
+          num: obj.selectedNum,
+        },
+        this.token
+      );
+      if(code ==200) toast(data)
+      this.show = false
     },
   },
 };

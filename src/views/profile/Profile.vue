@@ -73,9 +73,9 @@
 
 <script>
 import { mapState } from "vuex";
-import { queryToken } from "../../util";
-import NavBar from "../../components/navbar/NavBar.vue";
-import Card from "../../components/card/Card.vue";
+import { queryToken } from "@/util";
+import NavBar from "@/components/navbar/NavBar.vue";
+import Card from "@/components/card/Card.vue";
 export default {
   computed: {
     ...mapState({

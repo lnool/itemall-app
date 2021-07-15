@@ -6,6 +6,10 @@ const handleError = (err) => {
   if (err.code == 400) {
     toast(err.message)
   }
+  if (err.code == 401) {
+    toast(err.message)
+    window.location.href='/login'
+  }
 }
 
 
