@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import {queryToken} from '../util'
+import { queryToken } from '../util'
 
 Vue.use(VueRouter)
 
@@ -10,7 +10,8 @@ const routes = [
     path: '/',
     component: () => import('../views/home/Home.vue'),
     meta: {
-      title: '首页'
+      title: '首页',
+      keepAlive: true
     }
   },
   {
@@ -26,7 +27,8 @@ const routes = [
     path: '/category',
     component: () => import('../views/category/Category.vue'),
     meta: {
-      title: '分类'
+      title: '分类',
+      keepAlive: true
     }
   },
   {
@@ -35,7 +37,8 @@ const routes = [
     component: () => import('../views/cart/Cart.vue'),
     meta: {
       title: '购物车',
-      requireAuth:true
+      requireAuth: true,
+      keepAlive: false
     }
   },
   {
@@ -44,7 +47,8 @@ const routes = [
     component: () => import('../views/profile/Profile.vue'),
     meta: {
       title: '我的',
-      requireAuth:true
+      requireAuth: true,
+      keepAlive: true
     }
   },
   {
@@ -52,7 +56,8 @@ const routes = [
     path: '/register',
     component: () => import('../views/profile/Register.vue'),
     meta: {
-      title: '注册'
+      title: '注册',
+      keepAlive: true
     }
   },
   {
@@ -63,21 +68,41 @@ const routes = [
       title: '登录'
     }
   },
+  {
+    name: 'order',
+    path: '/order',
+    component: () => import('../views/order/Order.vue'),
+    meta: {
+      title: '订单',
+      requireAuth: true,
+      keepAlive: false
+    }
+  },
+  {
+    name: 'order-detail',
+    path: '/order-detail',
+    component: () => import('../views/order/OrderDetail.vue'),
+    meta: {
+      title: '订单详情',
+      requireAuth: true,
+      keepAlive: false
+    }
+  },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  mode: 'hash',
+  // base: process.env.BASE_URL,
   routes
 })
 router.beforeEach((to, from, next) => {
   // 验证授权
-  if(to.meta.requireAuth){
-    if(! queryToken().token) {
+  if (to.meta.requireAuth) {
+    if (!queryToken().token) {
       router.replace('/login')
     }
   }
-  
+
   window.document.title = to.meta.title
   next()
 })

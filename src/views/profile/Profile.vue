@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="order">
-        <div class="order-title">
+        <div class="order-title" @click="linkOrder">
           <span class="myorder">我的订单</span>
           <span class="more">
             查看全部
@@ -83,6 +83,11 @@ export default {
     }),
   },
   components: { NavBar, Card },
+  methods:{
+    linkOrder(){
+      this.$router.push('/order')
+    }
+  }
 };
 </script>
 

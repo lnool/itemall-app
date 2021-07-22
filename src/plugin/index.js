@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Swipe, SwipeItem, Lazyload, Tab, Tabs, Sticky, List, Loading, Collapse, CollapseItem, ShareSheet, GoodsAction, GoodsActionIcon, GoodsActionButton, Sku, Form, Field,Uploader,Button,RadioGroup,Radio} from 'vant';
+import { Swipe, SwipeItem, Lazyload, Tab, Tabs, Sticky, List, Loading, Collapse, CollapseItem, ShareSheet, GoodsAction, GoodsActionIcon, GoodsActionButton, Sku, Form, Field, Uploader, Button, RadioGroup, Radio, Checkbox, CheckboxGroup,Badge,Empty,ContactCard  } from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Swipe);
 Vue.use(SwipeItem);
@@ -19,13 +19,12 @@ Vue.use(Uploader);
 Vue.use(Button);
 Vue.use(RadioGroup);
 Vue.use(Radio);
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(Badge);
+Vue.use(Empty);
+Vue.use(ContactCard);
 
 Vue.use(GoodsAction);
 Vue.use(GoodsActionButton);
 Vue.use(GoodsActionIcon);
-
-Vue.prototype.$toast = function(message){
-  Toast({
-    message
-});
-}

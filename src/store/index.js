@@ -8,7 +8,8 @@ Vue.use(Vuex)
 
 const state = {
   user:null,
-  token:null
+  token:null,
+  cartIds:[]
 }
 
 export default new Vuex.Store({

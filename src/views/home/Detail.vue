@@ -50,14 +50,19 @@
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" />
       <van-goods-action-icon icon="shop-o" text="店铺" />
-      <van-goods-action-icon icon="shopping-cart-o" text="购物车" />
+      <van-goods-action-icon icon="shopping-cart-o" text="购物车" to="/cart" />
       <van-goods-action-button
         @click="show = true"
         color="#090C19"
         type="warning"
         text="加入购物车"
       />
-      <van-goods-action-button color="#16C1BC" type="danger" text="立即购买" />
+      <van-goods-action-button
+        color="#16C1BC"
+        @click="onBuyClicked"
+        type="danger"
+        text="立即购买"
+      />
     </van-goods-action>
     <van-share-sheet
       v-model="showShare"
@@ -79,12 +84,13 @@
 <script>
 import { mapState } from "vuex";
 import { queryDetail, saveCart } from "@/api";
-import { toast,queryToken} from "@/util";
+import { toast, queryToken } from "@/util";
 import NavBar from "../../components/navbar/NavBar.vue";
 import Collapse from "../../components/collapse/Collapse.vue";
 import Shop from "../../components/shop/Shop.vue";
 import Info from "../../components/info/Info.vue";
 export default {
+  name: "detail",
   data() {
     return {
       id: 0,
@@ -157,7 +163,7 @@ export default {
   },
   filters: {
     filterImg(goodDetail) {
-      return goodDetail.detailInfo.detailImage[0].list[0];
+      return 'http:'+goodDetail.detailInfo.detailImage[0].list[0];
     },
     prasePrice(price, flag) {
       const [num1, num2] = price.split(".");
@@ -200,11 +206,16 @@ export default {
         }
       });
     },
-    onBuyClicked() {
-      console.log("购买");
+    onBuyClicked(obj) {
+      this.$router.push({
+        path: "/order-detail",
+        query: {
+          info: [{ id: this.id, num: obj.selectedNum || 1 }],
+        },
+      });
     },
-   async onAddCartClicked(obj) {
-    const {code,data} = await saveCart(
+    async onAddCartClicked(obj) {
+      const { code, data } = await saveCart(
         {
           uid: this.user.id,
           gid: this.id,
@@ -212,8 +223,8 @@ export default {
         },
         this.token
       );
-      if(code ==200) toast(data)
-      this.show = false
+      if (code == 200) toast(data);
+      this.show = false;
     },
   },
 };

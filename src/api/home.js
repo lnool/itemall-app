@@ -12,19 +12,12 @@ export const queryGoods = (params) => $http({
   url: '/home/goods', params
 })
 
+// 请求商品数据
+export const queryGood = (params) => $http({
+  url: '/home/good', params
+})
+
 // 请求商品详情
 export const queryDetail = (params) => $http({
   url: '/home/detail', params
-})
-
-// 添加购物车
-export const saveCart = (data,token)=> $http({
-  url:'/cart',
-  method:'POST',
-  headers:{
-    common:{
-      Authorization:token
-    }
-  },
-  data
 })
